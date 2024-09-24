@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #111;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+  
+  .events {
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    padding: 20px 0;
+  }
+  
+  .event {
+    margin-bottom: 10px;
+  }
+  
+  .date {
+    display: inline-block;
+    width: 150px;
+    font-weight: bold;
+  }
+  
+  .title {
+    display: inline-block;
+  }
+  
+  .social-links {
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .social-links a {
+    display: inline-block;
+    margin: 0 10px;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .github:before {
+    content: "GitHub";
+  }
+  
+  .twitter:before {
+    content: "Twitter/X";
+  }
+  
+  .linkedin:before {
+    content: "LinkedIn";
+  }
