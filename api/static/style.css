@@ -34,12 +34,25 @@ p {
   padding: 20px 0;
 }
 
+.event-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: background-color 0.3s ease;
+  margin-bottom: 30px; /* Add spacing between event links */
+}
+
 .event {
   margin-bottom: 30px; /* Space between events */
 }
 
 .event:last-child {
   margin-bottom: 0; /* Remove extra space after the last event */
+}
+
+.event-link:hover {
+  background-color: #111;
+  color: #3498db; /* Change text color to blue on hover */
 }
 
 .date {
@@ -62,6 +75,11 @@ p {
   margin: 0 10px;
   color: #fff;
   text-decoration: underline;
+}
+
+.social-link:hover {
+  background-color: #111;
+  color: #3498db; /* Change text color to blue on hover */
 }
 
 .github:before {
