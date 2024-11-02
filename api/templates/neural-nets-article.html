@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Neural Nets from Scratch - Khizar Imran</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    /* Previous styles remain the same */
+    .article-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px;
+    }
+    
+    .article-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .article-date {
+      color: #888;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    
+    .article-content {
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+    
+    .article-content h2 {
+      color: #3498db;
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+    
+    .article-content ul {
+      list-style-type: disc;
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .article-content p {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+    
+    .back-link {
+      display: inline-block;
+      margin-bottom: 30px;
+      color: #3498db;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .back-link:hover {
+      color: #2980b9;
+    }
+
+    /* New styles for images */
+    .article-image {
+      width: 100%;
+      max-width: 800px;
+      margin: 30px 0;
+      border: 1px solid #333;
+      border-radius: 4px;
+    }
+
+    .image-caption {
+      text-align: center;
+      color: #888;
+      font-size: 14px;
+      margin-top: 10px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="article-container">
+    <a href="/" class="back-link">← Back to Portfolio</a>
+    
+    <div class="article-header">
+      <h1>Neural Nets from Scratch</h1>
+      <div class="article-date">Nov 2, 2024</div>
+    </div>
+    
+    <div class="article-content">
+      <p>In the world of data science, neural networks have become a go-to approach for tackling complex problems. But while pre-built libraries like TensorFlow or PyTorch make it easy to implement these models, there's something particularly rewarding — and educational — about building a neural network from scratch. I recently took on this challenge, using a weather dataset from Kaggle to create a neural network with ReLU activation, leveraging only pandas and numpy.</p>
+      
+      <h2>Why Build from Scratch?</h2>
+      <p>Constructing a neural network manually allows you to understand each moving part: weight initialization, forward propagation, activation functions, loss calculation, and backpropagation. When you implement each of these, you begin to appreciate the inner workings of these algorithms and how they handle data patterns.</p>
+      
+      <h2>Getting Started</h2>
+      <p>Using just pandas and numpy, I built a basic neural network with:</p>
+      <ul>
+        <li><strong>Layers</strong>: The network has an input layer, some hidden layers, and an output layer.</li>
+        <li><strong>Activation Function</strong>: ReLU (Rectified Linear Unit), chosen for its simplicity and efficiency in reducing vanishing gradient problems.</li>
+        <li><strong>Learning Rate (α)</strong>: Set to 0.01, which I found balanced learning speed with convergence.</li>
+        <li><strong>Iterations</strong>: 1,000 epochs to iteratively minimize the error and optimize the weights.</li>
+      </ul>
+      
+      <h2>Key Steps</h2>
+      <p>1. <strong>Initialize Weights and Biases</strong>: Random values are assigned to start, which are adjusted over time to minimize error.</p>
+      <p>2. <strong>Forward Propagation</strong>: Data flows through each layer, applying weights and biases, and using ReLU for activation.</p>
+      <p>3. <strong>Compute Loss</strong>: Using a mean squared error function, I calculated the difference between predicted and actual values.</p>
+      <p>4. <strong>Backpropagation</strong>: This phase calculates gradients to adjust weights, ensuring the network learns the patterns in the dataset.</p>
+      
+      <img src="{{ url_for('static', filename='images/neural-nets-code.png') }}" alt="Neural Network Code Structure" class="article-image">
+      <div class="image-caption">Structural code for neural network setup</div>
+      
+      <h2>Results</h2>
+      <p>After 1,000 iterations, the network demonstrated a reasonable approximation of the target values in the dataset. Below is a snapshot of the progress — note how the model begins to align with the expected results over time.</p>
+      
+      <img src="{{ url_for('static', filename='images/neural-nets-results.png') }}" alt="Neural Network Results" class="article-image">
+      <div class="image-caption">Training progress showing decrease in MSE over epochs</div>
+      
+      <p>Building this from scratch was both challenging and rewarding, and it provided valuable insights into how neural networks learn and adapt. If you're looking to deepen your understanding of machine learning, I highly recommend this exercise.</p>
+    </div>
+    
+    <div class="social-links">
+      <a href="https://github.com/KhizarImran" class="github"></a>
+      <a href="https://x.com/pips_py" class="twitter"></a>
+      <a href="https://www.linkedin.com/in/khizar-imran-a80277279/" class="linkedin"></a>
+      <a href="https://medium.com/@khizarimran" class="medium"></a>
+    </div>
+  </div>
+</body>
+</html>
