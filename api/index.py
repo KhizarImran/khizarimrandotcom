@@ -10,5 +10,9 @@ def portfolio():
 def neural_nets_article():
     return render_template('neural-nets-article.html')
 
+@app.route('/article/hidden-markov-models')
+def hmm_article():
+    return render_template('hmm-ts.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

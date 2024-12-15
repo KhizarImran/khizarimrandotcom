@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hidden Markov Models - Khizar Imran</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    /* Match neural nets article styles */
+    .article-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px;
+    }
+    
+    .article-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .article-date {
+      color: #888;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    
+    .article-content {
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+    
+    .article-content h2 {
+      color: #3498db;
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+    
+    .article-content ul {
+      list-style-type: disc;
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .article-content p {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+    
+    .back-link {
+      display: inline-block;
+      margin-bottom: 30px;
+      color: #3498db;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .back-link:hover {
+      color: #2980b9;
+    }
+
+    /* New styles for images */
+    .article-image {
+      width: 100%;
+      max-width: 800px;
+      margin: 30px 0;
+      border: 1px solid #333;
+      border-radius: 4px;
+    }
+
+    .image-caption {
+      text-align: center;
+      color: #888;
+      font-size: 14px;
+      margin-top: 10px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="article-container">
+    <a href="/" class="back-link">← Back to Homepage</a>
+    
+    <div class="article-header">
+      <h1>Leveraging Hidden Markov Models for Regime-Based Segmentation in Time-Series</h1>
+      <div class="article-date">Nov 16, 2024</div>
+    </div>
+    
+    <div class="article-content">
+      <p>A technical exploration of how Hidden Markov Models can reveal underlying patterns in complex time series data</p>
+      
+      <h2>The Power of State-Space Models</h2>
+      <p>Time series data is everywhere — financial markets, weather patterns, and speech signals. But analyzing it isn’t always straightforward, especially when hidden factors drive the observed data. Hidden Markov Models (HMMs) are a statistical tool that can uncover these hidden states, making them invaluable for tasks like regime detection in financial markets. In this article, we’ll explore what HMMs are, how they work, and how traders can use them to identify market regimes and improve their strategies.</p>
+      
+      <div class="article-content">
+        <h2>Understanding Hidden Markov Models</h2>
+        <p>
+          HMMs are models used to describe systems that transition between hidden states over time. Each hidden state produces observable outputs according to specific probabilities. The model consists of three main parts: transition probabilities (how likely it is to move between states), emission probabilities (how likely each state is to produce specific observations), and initial probabilities (the likelihood of starting in a particular state). HMMs are widely used in fields like speech recognition, bioinformatics, and financial market analysis because they can model complex, sequential patterns effectively.
+        </p>
+        <p>
+          At its core, an HMM is a state-space model that combines two stochastic processes:
+        </p>
+        <ol>
+          <li>
+            <strong>The Hidden Process:</strong> A Markov chain representing the underlying states<br>
+            <code>a<sub>ij</sub> = P(q<sub>t+1</sub> = j | q<sub>t</sub> = i)</code>
+          </li>
+          <li>
+            <strong>The Observable Process:</strong> The emission distributions for each state<br>
+            <code>b<sub>j</sub>(o<sub>t</sub>) = P(o<sub>t</sub> | q<sub>t</sub> = j)</code>
+          </li>
+        </ol>
+        <p>
+          The model’s power comes from its ability to capture both the temporal dependencies through the Markov property and state-specific behavior through emission distributions.
+        </p>
+      </div>
+      
+      <h2>Regime-Based Segmentation in Trading</h2>
+      <p>
+        In trading, regime-based segmentation means dividing the market into distinct phases or conditions, such as bullish, bearish, or sideways trends. Identifying these regimes is crucial because markets behave differently under each condition. For example, a strategy that works in a bullish market might fail in a bearish one. HMMs help traders uncover these hidden regimes, even when they aren’t directly observable.
+      </p>
+      <h2>Implementation and Estimation</h2>
+      <p>
+        The implementation of HMMs involves several key steps:
+      </p>
+      <h3>Feature Engineering</h3>
+      <p>
+        Key features for state detection:
+      </p>
+      <ul>
+        <li>Level shifts</li>
+        <li>Local volatility</li>
+        <li>Distributional characteristics</li>
+      </ul>
+      <img src="{{ url_for('static', filename='images/feature-extraction.png') }}" alt="HMM Implementation Code" class="article-image">
+      <div class="image-caption">Sample Python code for implementing HMM</div>
+      <h3>Model Estimation</h3>
+      <img src="{{ url_for('static', filename='images/model-extraction.png') }}" alt="hmm model" class="article-image">
+      <div class="image-caption">hmm model</div>
+      <h3>Parameter Learning</h3>
+      <p>
+        The model parameters are typically estimated using:
+      </p>
+      <ul>
+        <li>Maximum Likelihood Estimation</li>
+        <li>The Baum-Welch algorithm (a special case of EM)</li>
+        <li>Forward-backward procedures for state inference</li>
+      </ul>
+      <h2>State Identification</h2>
+      <p>
+        The analysis of the time series revealed three distinct market regimes. State 0, the stationary regime, is characterized by low temporal dependence, a stable variance structure, and a returns distribution resembling a Gaussian curve. State 1, the transitional regime, shows moderate serial correlation, shifting variance patterns, and a skewed returns distribution, indicating a phase of market adjustment. Finally, State 2, the dynamic regime, is marked by strong temporal dependence, heteroskedastic (changing) variance, and a heavy-tailed returns distribution, often reflecting periods of high volatility and significant market shifts.
+      </p>
+      <img src="{{ url_for('static', filename='images/hmm.png') }}" alt="Figure 1: Time series segmentation using HMM state classification" class="article-image">
+      <div class="image-caption">Figure 1: Time series segmentation using HMM state classification</div>
+      <p>
+        Validation ensures the Hidden Markov Model (HMM) is reliable and effective. Techniques like AIC, BIC, and likelihood ratio tests help determine the optimal number of states, while cross-validation ensures the model generalizes to new data. Residual analysis checks for unmodeled patterns, and state stability testing ensures consistent regime assignments. Goodness-of-fit tests and predictive performance evaluations confirm the model’s accuracy and practicality for tasks like market regime detection.
+      </p>
+      <h2>Conclusion</h2>
+      <p>HMMs are a powerful tool for uncovering hidden structures in time series data, making them highly useful for tasks like market regime detection. Beyond finance, these models are equally valuable in fields like economics, where they identify growth or recession periods, and in climate science, where they help analyze weather patterns and climate shifts. In biology, they assist in decoding genetic sequences, while in speech recognition, they enable accurate modeling of spoken language. By applying HMMs, traders and professionals across disciplines can better understand complex systems and make informed decisions. If you’re curious, explore Python libraries and try applying HMMs to your data to uncover insights.</p>
+    </div>
+    
+    <div class="social-links">
+      <a href="https://github.com/KhizarImran" class="github"></a>
+      <a href="https://x.com/pips_py" class="twitter"></a>
+      <a href="https://www.linkedin.com/in/khizar-imran-a80277279/" class="linkedin"></a>
+      <a href="https://medium.com/@khizarimran" class="medium"></a>
+    </div>
+  </div>
+</body>
+</html>
