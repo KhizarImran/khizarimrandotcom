@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hidden Markov Models - Khizar Imran</title>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
   <style>
     /* Match neural nets article styles */
     .article-container {
+      width: 95%;
       max-width: 800px;
       margin: 0 auto;
-      padding: 40px;
+      padding: 20px;
+    }
+    
+    @media (max-width: 600px) {
+      .article-container {
+        padding: 15px;
+      }
+      
+      .article-content {
+        font-size: 16px;
+      }
+      
+      h1 {
+        font-size: 24px;
+      }
+      
+      h2 {
+        font-size: 20px;
+      }
     }
     
     .article-header {
@@ -87,7 +107,7 @@
       <p>A technical exploration of how Hidden Markov Models can reveal underlying patterns in complex time series data</p>
       
       <h2>The Power of State-Space Models</h2>
-      <p>Time series data is everywhere — financial markets, weather patterns, and speech signals. But analyzing it isn’t always straightforward, especially when hidden factors drive the observed data. Hidden Markov Models (HMMs) are a statistical tool that can uncover these hidden states, making them invaluable for tasks like regime detection in financial markets. In this article, we’ll explore what HMMs are, how they work, and how traders can use them to identify market regimes and improve their strategies.</p>
+      <p>Time series data is everywhere — financial markets, weather patterns, and speech signals. But analyzing it isn't always straightforward, especially when hidden factors drive the observed data. Hidden Markov Models (HMMs) are a statistical tool that can uncover these hidden states, making them invaluable for tasks like regime detection in financial markets. In this article, we'll explore what HMMs are, how they work, and how traders can use them to identify market regimes and improve their strategies.</p>
       
       <div class="article-content">
         <h2>Understanding Hidden Markov Models</h2>
@@ -108,13 +128,13 @@
           </li>
         </ol>
         <p>
-          The model’s power comes from its ability to capture both the temporal dependencies through the Markov property and state-specific behavior through emission distributions.
+          The model's power comes from its ability to capture both the temporal dependencies through the Markov property and state-specific behavior through emission distributions.
         </p>
       </div>
       
       <h2>Regime-Based Segmentation in Trading</h2>
       <p>
-        In trading, regime-based segmentation means dividing the market into distinct phases or conditions, such as bullish, bearish, or sideways trends. Identifying these regimes is crucial because markets behave differently under each condition. For example, a strategy that works in a bullish market might fail in a bearish one. HMMs help traders uncover these hidden regimes, even when they aren’t directly observable.
+        In trading, regime-based segmentation means dividing the market into distinct phases or conditions, such as bullish, bearish, or sideways trends. Identifying these regimes is crucial because markets behave differently under each condition. For example, a strategy that works in a bullish market might fail in a bearish one. HMMs help traders uncover these hidden regimes, even when they aren't directly observable.
       </p>
       <h2>Implementation and Estimation</h2>
       <p>
@@ -150,10 +170,10 @@
       <img src="{{ url_for('static', filename='images/hmm.png') }}" alt="Figure 1: Time series segmentation using HMM state classification" class="article-image">
       <div class="image-caption">Figure 1: Time series segmentation using HMM state classification</div>
       <p>
-        Validation ensures the Hidden Markov Model (HMM) is reliable and effective. Techniques like AIC, BIC, and likelihood ratio tests help determine the optimal number of states, while cross-validation ensures the model generalizes to new data. Residual analysis checks for unmodeled patterns, and state stability testing ensures consistent regime assignments. Goodness-of-fit tests and predictive performance evaluations confirm the model’s accuracy and practicality for tasks like market regime detection.
+        Validation ensures the Hidden Markov Model (HMM) is reliable and effective. Techniques like AIC, BIC, and likelihood ratio tests help determine the optimal number of states, while cross-validation ensures the model generalizes to new data. Residual analysis checks for unmodeled patterns, and state stability testing ensures consistent regime assignments. Goodness-of-fit tests and predictive performance evaluations confirm the model's accuracy and practicality for tasks like market regime detection.
       </p>
       <h2>Conclusion</h2>
-      <p>HMMs are a powerful tool for uncovering hidden structures in time series data, making them highly useful for tasks like market regime detection. Beyond finance, these models are equally valuable in fields like economics, where they identify growth or recession periods, and in climate science, where they help analyze weather patterns and climate shifts. In biology, they assist in decoding genetic sequences, while in speech recognition, they enable accurate modeling of spoken language. By applying HMMs, traders and professionals across disciplines can better understand complex systems and make informed decisions. If you’re curious, explore Python libraries and try applying HMMs to your data to uncover insights.</p>
+      <p>HMMs are a powerful tool for uncovering hidden structures in time series data, making them highly useful for tasks like market regime detection. Beyond finance, these models are equally valuable in fields like economics, where they identify growth or recession periods, and in climate science, where they help analyze weather patterns and climate shifts. In biology, they assist in decoding genetic sequences, while in speech recognition, they enable accurate modeling of spoken language. By applying HMMs, traders and professionals across disciplines can better understand complex systems and make informed decisions. If you're curious, explore Python libraries and try applying HMMs to your data to uncover insights.</p>
     </div>
     
     <div class="social-links">

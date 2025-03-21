@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Neural Nets from Scratch - Khizar Imran</title>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
   <style>
     /* Previous styles remain the same */
     .article-container {
+      width: 95%;
       max-width: 800px;
       margin: 0 auto;
-      padding: 40px;
+      padding: 20px;
+    }
+    
+    @media (max-width: 600px) {
+      .article-container {
+        padding: 15px;
+      }
+      
+      .article-content {
+        font-size: 16px;
+      }
+      
+      h1 {
+        font-size: 24px;
+      }
+      
+      h2 {
+        font-size: 20px;
+      }
     }
     
     .article-header {
