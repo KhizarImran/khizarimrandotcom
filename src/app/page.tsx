@@ -227,6 +227,7 @@ export default function Terminal() {
   const [time, setTime] = useState<string>("");
   const [date, setDate] = useState<string>("");
   const [activeArticle, setActiveArticle] = useState<string | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const updateTime = () => {
@@ -244,23 +245,37 @@ export default function Terminal() {
   return (
     <div className="h-screen w-screen flex flex-col bg-black overflow-hidden">
       {/* Top Header Bar */}
-      <header className="flex items-center justify-between px-2 py-1 bg-gradient-to-b from-[#2a2a2a] to-[#1a1a1a] border-b border-[#333] text-[11px]">
-        <div className="flex items-center gap-4">
-          <span className="bg-[#ff6600] text-black px-2 py-0.5 font-bold">1-TERMINAL</span>
-          <span className="text-[#999]">Equities Menu</span>
-          <span className="text-white font-bold">KHIZAR.IMRAN</span>
-          <span className="text-[#999]">Equity</span>
-          <span className="text-[#ffaa00]">KI</span>
+      <header className="flex items-center justify-between px-2 py-1 bg-gradient-to-b from-[#2a2a2a] to-[#1a1a1a] border-b border-[#333] text-[10px] md:text-[11px]">
+        <div className="flex items-center gap-2 md:gap-4">
+          <span className="bg-[#ff6600] text-black px-1 md:px-2 py-0.5 font-bold">TERMINAL</span>
+          <span className="text-white font-bold hidden sm:inline">KHIZAR.IMRAN</span>
+          <span className="text-white font-bold sm:hidden">KI</span>
+          <span className="text-[#ffaa00] hidden md:inline">Equity</span>
         </div>
-        <div className="flex items-center gap-4">
-          <span className="text-[#00ff00]">● Connected</span>
-          <span className="text-[#ffaa00]">{date}</span>
+        <div className="flex items-center gap-2 md:gap-4">
+          <span className="text-[#00ff00] hidden sm:inline">● Connected</span>
+          <span className="text-[#00ff00] sm:hidden">●</span>
+          <span className="text-[#ffaa00] hidden md:inline">{date}</span>
           <span className="text-white font-bold">{time}</span>
         </div>
       </header>
 
-      {/* Command Bar */}
-      <div className="flex items-center px-2 py-1 bg-black border-b border-[#333] text-[11px]">
+      {/* Mobile Menu Button */}
+      <div className="md:hidden flex items-center justify-between px-2 py-1 bg-black border-b border-[#333] text-[10px]">
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="bg-[#ff6600] text-black px-2 py-1 font-bold"
+        >
+          {mobileMenuOpen ? "✕ CLOSE" : "☰ MENU"}
+        </button>
+        <span className="text-[#ff6600] font-bold">Khizar Imran</span>
+        <a href="mailto:khzrimrn@gmail.com" className="bg-[#3399ff] text-black px-2 py-1 font-bold">
+          CONTACT
+        </a>
+      </div>
+
+      {/* Command Bar - Hidden on mobile */}
+      <div className="hidden md:flex items-center px-2 py-1 bg-black border-b border-[#333] text-[11px]">
         <span className="text-[#ffaa00]">&lt;HELP&gt;</span>
         <span className="text-[#999] ml-2">for explanation.</span>
         <span className="text-[#ffaa00] ml-4">&lt;MENU&gt;</span>
@@ -269,8 +284,8 @@ export default function Terminal() {
         <span className="text-[#999] ml-2">to Hide Sidebar</span>
       </div>
 
-      {/* Search Bar */}
-      <div className="flex items-center px-2 py-1 bg-[#1a1a1a] border-b border-[#333] text-[11px]">
+      {/* Search Bar - Hidden on mobile */}
+      <div className="hidden md:flex items-center px-2 py-1 bg-[#1a1a1a] border-b border-[#333] text-[11px]">
         <span className="text-[#999]">Search</span>
         <span className="bg-[#ff6600] text-black px-2 ml-2 font-bold">KI</span>
         <span className="text-white ml-2">→</span>
@@ -281,10 +296,68 @@ export default function Terminal() {
         <span className="text-[#ff6600] ml-auto font-bold">Khizar Imran</span>
       </div>
 
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div className="md:hidden absolute top-[70px] left-0 right-0 bottom-0 bg-black z-40 overflow-auto p-4 text-[11px]">
+          <div className="mb-4">
+            <div className="text-[#999] mb-2">Navigation</div>
+            {["Overview", "Skills", "Projects", "Articles", "Experience", "Contact"].map((item, i) => (
+              <div
+                key={item}
+                className="flex items-center py-2 hover:bg-[#ff6600] hover:text-black cursor-pointer px-2 border-b border-[#222]"
+                onClick={() => { setMobileMenuOpen(false); if (item === "Overview") setActiveArticle(null); }}
+              >
+                <span className="text-[#3399ff] w-6">{i + 1})</span>
+                <span className="text-[#ffaa00]">{item}</span>
+              </div>
+            ))}
+          </div>
+          <div className="mb-4">
+            <div className="text-[#999] mb-2">Specializations</div>
+            <div className="text-[#00ff00]">▸ Full-Stack Dev</div>
+            <div className="text-[#00ff00]">▸ AI/ML Integration</div>
+            <div className="text-[#00ff00]">▸ AWS Cloud Infra</div>
+            <div className="text-[#00ff00]">▸ Algo Trading</div>
+          </div>
+          <div className="mb-4">
+            <div className="text-[#999] mb-2">Connect</div>
+            {socials.map((social) => (
+              <a
+                key={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block py-2 text-[#3399ff] hover:bg-[#ff6600] hover:text-black px-2"
+              >
+                {social.name} - {social.handle}
+              </a>
+            ))}
+          </div>
+          <div className="grid grid-cols-2 gap-2 mb-4">
+            <div className="border border-[#333] p-3 text-center">
+              <div className="text-[#999] text-[9px]">Contract Won</div>
+              <div className="text-[#00ff00] text-xl font-bold">£30M</div>
+            </div>
+            <div className="border border-[#333] p-3 text-center">
+              <div className="text-[#999] text-[9px]">Dataset Rows</div>
+              <div className="text-[#00ff00] text-xl font-bold">7B+</div>
+            </div>
+            <div className="border border-[#333] p-3 text-center">
+              <div className="text-[#999] text-[9px]">Deploy Time</div>
+              <div className="text-[#ffaa00] text-xl font-bold">-50%</div>
+            </div>
+            <div className="border border-[#333] p-3 text-center">
+              <div className="text-[#999] text-[9px]">Hazard Det.</div>
+              <div className="text-[#ff6600] text-xl font-bold">10x</div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Main Content Grid */}
-      <div className="flex-1 grid grid-cols-12 gap-0 overflow-hidden">
-        {/* Left Sidebar */}
-        <aside className="col-span-2 border-r border-[#333] flex flex-col text-[11px]">
+      <div className="flex-1 grid grid-cols-1 md:grid-cols-12 gap-0 overflow-hidden">
+        {/* Left Sidebar - Hidden on mobile */}
+        <aside className="hidden md:flex md:col-span-2 border-r border-[#333] flex-col text-[11px]">
           <div className="bb-header">Developer Profile</div>
           <nav className="flex-1 p-2">
             <div className="text-[#999] mb-2">Navigation</div>
@@ -323,12 +396,12 @@ export default function Terminal() {
         </aside>
 
         {/* Main Content Area */}
-        <main className="col-span-7 flex flex-col overflow-hidden">
+        <main className="col-span-1 md:col-span-7 flex flex-col overflow-hidden">
           {/* Show article content OR default view */}
           {currentArticle ? (
             // Article View
             <section className="flex-1 overflow-hidden flex flex-col">
-              <div className="bb-header flex justify-between items-center">
+              <div className="bb-header flex justify-between items-center text-[10px] md:text-[11px]">
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => setActiveArticle(null)}
@@ -337,11 +410,11 @@ export default function Terminal() {
                     ← BACK
                   </button>
                   <span className="bg-[#ff6600] text-black px-1 text-[9px] font-bold">{currentArticle.category}</span>
-                  <span>{currentArticle.title}</span>
+                  <span className="hidden sm:inline">{currentArticle.title}</span>
                 </div>
                 <span className="text-[#999]">{currentArticle.date}</span>
               </div>
-              <div className="flex-1 overflow-auto p-4 text-[11px] article-content">
+              <div className="flex-1 overflow-auto p-3 md:p-4 text-[11px] md:text-[11px] article-content">
                 {currentArticle.content}
               </div>
             </section>
@@ -350,28 +423,34 @@ export default function Terminal() {
             <>
               {/* Bio Section */}
               <section className="border-b border-[#333]">
-                <div className="bb-header flex justify-between">
+                <div className="bb-header flex justify-between text-[10px] md:text-[11px]">
                   <span>Profile Overview</span>
                   <span className="text-[#ffaa00]">KI Equity</span>
                 </div>
-                <div className="p-3 text-[11px]">
-                  <div className="flex items-start gap-4">
+                <div className="p-2 md:p-3 text-[11px]">
+                  <div className="flex flex-col sm:flex-row items-start gap-2 sm:gap-4">
                     <div className="flex-1">
-                      <h1 className="text-[#ff6600] text-lg font-bold mb-1">KHIZAR IMRAN</h1>
-                      <p className="text-[#ffaa00] mb-2">Software Engineer | AI/ML Integration | Founder @ Klaro-tech</p>
-                      <p className="text-[#999] text-[10px] leading-relaxed">
+                      <h1 className="text-[#ff6600] text-base md:text-lg font-bold mb-1">KHIZAR IMRAN</h1>
+                      <p className="text-[#ffaa00] text-[10px] md:text-[11px] mb-2">Software Engineer | AI/ML Integration | Founder @ Klaro-tech</p>
+                      <p className="text-[#999] text-[9px] md:text-[10px] leading-relaxed">
                         Software Engineer with expertise in full-stack development, AI/ML integration, and cloud infrastructure.
                         Proven track record of delivering high-impact solutions including securing a £30M contract through AI-powered applications.
                         Founder of Klaro-tech, a SaaS platform serving algorithmic traders.
                       </p>
                     </div>
-                    <div className="text-right text-[10px]">
-                      <div className="text-[#999]">Status</div>
-                      <div className="text-[#00ff00] font-bold">ACTIVE</div>
-                      <div className="text-[#999] mt-2">Location</div>
-                      <div className="text-white">Newcastle, UK</div>
-                      <div className="text-[#999] mt-2">Email</div>
-                      <div className="text-[#ffaa00]">khzrimrn@gmail.com</div>
+                    <div className="flex sm:flex-col gap-4 sm:gap-0 text-[10px] sm:text-right w-full sm:w-auto">
+                      <div>
+                        <div className="text-[#999]">Status</div>
+                        <div className="text-[#00ff00] font-bold">ACTIVE</div>
+                      </div>
+                      <div className="sm:mt-2">
+                        <div className="text-[#999]">Location</div>
+                        <div className="text-white">Newcastle, UK</div>
+                      </div>
+                      <div className="sm:mt-2 hidden sm:block">
+                        <div className="text-[#999]">Email</div>
+                        <div className="text-[#ffaa00]">khzrimrn@gmail.com</div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -428,14 +507,14 @@ export default function Terminal() {
               {/* Experience Section */}
               <section className="border-t border-[#333]">
                 <div className="bb-header">Work Experience</div>
-                <div className="p-2 text-[10px]">
+                <div className="p-2 text-[9px] md:text-[10px]">
                   {experience.map((exp, i) => (
-                    <div key={i} className="flex items-center py-1 border-b border-[#222]">
+                    <div key={i} className="flex flex-wrap md:flex-nowrap items-center py-1 border-b border-[#222] gap-1">
                       <span className="text-[#3399ff] w-4">{i + 1})</span>
-                      <span className="text-white w-28">{exp.company}</span>
-                      <span className="text-[#ffaa00] flex-1">{exp.role}</span>
-                      <span className="text-[#00ff00] w-20">{exp.focus}</span>
-                      <span className="text-[#666]">{exp.period}</span>
+                      <span className="text-white w-auto md:w-28">{exp.company}</span>
+                      <span className="text-[#ffaa00] flex-1 hidden md:inline">{exp.role}</span>
+                      <span className="text-[#00ff00] w-auto md:w-20">{exp.focus}</span>
+                      <span className="text-[#666] hidden sm:inline">{exp.period}</span>
                     </div>
                   ))}
                 </div>
@@ -444,8 +523,8 @@ export default function Terminal() {
           )}
         </main>
 
-        {/* Right Sidebar - Stats */}
-        <aside className="col-span-3 border-l border-[#333] flex flex-col text-[10px] overflow-hidden">
+        {/* Right Sidebar - Stats - Hidden on mobile */}
+        <aside className="hidden md:flex md:col-span-3 border-l border-[#333] flex-col text-[10px] overflow-hidden">
           {/* Skills/Key Indicators */}
           <section>
             <div className="bb-header flex justify-between">
@@ -524,15 +603,14 @@ export default function Terminal() {
       </div>
 
       {/* Bottom Status Bar */}
-      <footer className="flex items-center justify-between px-2 py-1 bg-gradient-to-b from-[#1a1a1a] to-[#0a0a0a] border-t border-[#333] text-[10px]">
-        <div className="flex items-center gap-4">
-          <span className="text-[#999]">Terminal v1.0</span>
-          <span className="text-[#333]">|</span>
-          <span className="text-[#999]">Built with Next.js + Tailwind</span>
+      <footer className="flex items-center justify-between px-2 py-1 bg-gradient-to-b from-[#1a1a1a] to-[#0a0a0a] border-t border-[#333] text-[9px] md:text-[10px]">
+        <div className="flex items-center gap-2 md:gap-4">
+          <span className="text-[#999] hidden sm:inline">Terminal v1.0</span>
+          <span className="text-[#333] hidden sm:inline">|</span>
+          <span className="text-[#999] hidden md:inline">Built with Next.js + Tailwind</span>
+          <span className="text-[#666]">© 2025 KI</span>
         </div>
-        <div className="flex items-center gap-4">
-          <span className="text-[#666]">© 2025 Khizar Imran</span>
-          <span className="text-[#333]">|</span>
+        <div className="flex items-center gap-2 md:gap-4">
           <span className="text-[#ffaa00]">All Systems Operational</span>
           <span className="text-[#00ff00] cursor-blink">█</span>
         </div>
