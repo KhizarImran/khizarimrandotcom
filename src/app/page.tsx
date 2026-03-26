@@ -32,7 +32,7 @@ export default function Home() {
 
         <section className="section">
           <p className="section-label">Software</p>
-          <p style={{ fontSize: "14.5px", lineHeight: "1.75", color: "var(--text-2)", marginBottom: "14px" }}>
+          <p style={{ fontSize: "14.5px", lineHeight: "1.75", color: "var(--text-2)", marginBottom: "14px", borderTop: "1px solid var(--border)", paddingTop: "10px" }}>
             I have a background in biology and data science with strong foundations in statistical analysis and experimental design.
           </p>
           <p style={{ fontSize: "14.5px", lineHeight: "1.75", color: "var(--text-2)", marginBottom: "14px" }}>
