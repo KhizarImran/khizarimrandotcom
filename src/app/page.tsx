@@ -48,7 +48,7 @@ export default function Home() {
             Currently running Arch Linux with omarchy as my daily driver.
           </p>
           <p style={{ fontSize: "14.5px", lineHeight: "1.75", color: "var(--text-2)", marginBottom: "14px" }}>
-            Trying to dabble with Rust.
+            Trying to dabble with Rust 🦀 
           </p>
         </section>
 
