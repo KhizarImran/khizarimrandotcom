@@ -31,6 +31,25 @@ export default function Home() {
         </section>
 
         <section className="section">
+          <p className="section-label">Software</p>
+          <p style={{ fontSize: "14.5px", lineHeight: "1.75", color: "var(--text-2)", marginBottom: "14px" }}>
+            I have a background in biology and data science with strong foundations in statistical analysis and experimental design.
+          </p>
+          <p style={{ fontSize: "14.5px", lineHeight: "1.75", color: "var(--text-2)", marginBottom: "14px" }}>
+            I run a quant finance lab — building end-to-end pipelines from data gathering and strategy experimentation through to live market deployment.
+          </p>
+          <p style={{ fontSize: "14.5px", lineHeight: "1.75", color: "var(--text-2)", marginBottom: "14px" }}>
+            My homelab runs virtual environments for website hosting, machine learning experiments, and infrastructure testing.
+          </p>
+          <p style={{ fontSize: "14.5px", lineHeight: "1.75", color: "var(--text-2)", marginBottom: "14px" }}>
+            I enjoy building AI frameworks and exploring new technology as it emerges.
+          </p>
+          <p style={{ fontSize: "14.5px", lineHeight: "1.75", color: "var(--text-2)", marginBottom: "14px" }}>
+            Currently running Arch Linux with omarchy as my daily driver.
+          </p>
+        </section>
+
+        <section className="section">
           <p className="section-label">Experience</p>
           <ul className="row-list">
             {experience.map((e) => (
