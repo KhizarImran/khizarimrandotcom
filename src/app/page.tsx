@@ -23,7 +23,7 @@ export default function Home() {
           <p>
             Software engineer based in Newcastle, UK. I build full-stack products, integrate AI/ML systems,
             and design cloud infrastructure on AWS. Currently at{" "}
-            <a href="https://mgroup.co.uk" target="_blank" rel="noopener noreferrer">MGroup Energy</a>{" "}
+            <a href="https://mgroupltd.com" target="_blank" rel="noopener noreferrer">MGroup Energy</a>{" "}
             and founder of{" "}
             <a href="https://klaro-tech.com" target="_blank" rel="noopener noreferrer">Klaro-tech</a>,
             a SaaS platform for algorithmic traders.
