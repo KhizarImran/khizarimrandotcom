@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "KHIZAR IMRAN | Terminal",
-  description: "Fullstack Developer | AI Products | Quant Trading",
+  title: "Khizar Imran",
+  description: "Software Engineer — Full-stack, AI/ML, AWS. Founder of Klaro-tech.",
 };
 
 export default function RootLayout({
@@ -13,10 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">
-        <div className="scanline" />
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
