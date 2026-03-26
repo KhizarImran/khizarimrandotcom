@@ -186,7 +186,7 @@ export default function Articles() {
       )}
 
       <footer className="site-footer">
-        <p>© 2025 Khizar Imran</p>
+        <p>© 2026 Khizar Imran</p>
       </footer>
     </div>
   );
