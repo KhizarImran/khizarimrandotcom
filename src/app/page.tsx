@@ -8,8 +8,8 @@ const experience = [
 
 const links = [
   { name: "GitHub", handle: "@KhizarImran", url: "https://github.com/KhizarImran" },
-  { name: "Twitter / X", handle: "@khizarimran_", url: "https://twitter.com/khizarimran_" },
-  { name: "LinkedIn", handle: "/in/khizarimran", url: "https://linkedin.com/in/khizarimran" },
+  { name: "Twitter / X", handle: "@khzrimrn", url: "https://x.com/khzrimrn" },
+  { name: "LinkedIn", handle: "/in/khizar-imran-uk", url: "https://linkedin.com/in/khizar-imran-uk" },
   { name: "Medium", handle: "@khizarimran", url: "https://medium.com/@khizarimran" },
 ];
 
@@ -64,7 +64,7 @@ export default function Home() {
       </main>
 
       <footer className="site-footer">
-        <p>© 2025 Khizar Imran</p>
+        <p>© 2026 Khizar Imran</p>
       </footer>
     </div>
   );
