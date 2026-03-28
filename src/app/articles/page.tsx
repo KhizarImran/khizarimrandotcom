@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Nav from "../nav";
 
 /* ─── Article content ───────────────────────────────────── */
@@ -96,6 +97,7 @@ const articleContent: Record<string, {
 };
 
 const articles = [
+  { id: "fine-tuning", title: "Why Is Fine-Tuning Underrated?", date: "Mar 2026", category: "ML", route: "/articles/fine-tuning" },
   { id: "neural-nets", title: "Neural Networks From Scratch", date: "Nov 2024", category: "ML", external: false },
   { id: "hmm", title: "Hidden Markov Models in Trading", date: "Nov 2024", category: "Quant", external: false },
   { id: "cot", title: "Automating COT Report Data Pipeline", date: "Mar 2024", category: "Data", external: true, url: "https://medium.com/@khizarimran/automating-cot-report-data-pipeline-using-python-a1006e4fca23" },
@@ -150,7 +152,21 @@ export default function Articles() {
             <p className="section-label">All Writing</p>
             <ul className="article-list">
               {articles.map((a) =>
-                a.external ? (
+                "route" in a ? (
+                  <li key={a.id}>
+                    <Link
+                      href={a.route as string}
+                      className="article-row"
+                      style={{ textDecoration: "none", display: "flex" }}
+                    >
+                      <div className="article-row-left">
+                        <div className="article-row-title">{a.title}</div>
+                        <div className="article-row-meta">{a.category}</div>
+                      </div>
+                      <span className="article-row-right">{a.date}</span>
+                    </Link>
+                  </li>
+                ) : a.external ? (
                   <li key={a.id}>
                     <a
                       href={a.url}
