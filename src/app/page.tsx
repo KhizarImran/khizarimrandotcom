@@ -1,7 +1,7 @@
 import Nav from "./nav";
 
 const experience = [
-  { company: "MGroup Energy", role: "Software Engineer", period: "Jun 2024 – Present", detail: "Full-stack development, AI/ML integration, AWS infrastructure" },
+  { company: "MGroup Energy", role: "Software Developer", period: "Jun 2024 – Present", detail: "Full-stack development, AI/ML integration, AWS infrastructure" },
   { company: "Klaro-tech", role: "Founder", period: "2024 – Present", detail: "SaaS for algorithmic traders" },
   { company: "University of Dundee", role: "BSc Biomedical Science", period: "2020 – 2023", detail: "2:1 Honours" },
 ];
@@ -21,7 +21,7 @@ export default function Home() {
       <main>
         <section className="intro">
           <p>
-            Software engineer based in Newcastle, UK. I build full-stack products, integrate AI/ML systems,
+            Software developer based in Newcastle, UK. I build full-stack products, integrate AI/ML systems,
             and design cloud infrastructure on AWS. Currently at{" "}
             <a href="https://mgroupltd.com" target="_blank" rel="noopener noreferrer">MGroup Energy</a>{" "}
             and founder of{" "}

@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Khizar Imran",
-  description: "Software Engineer — Full-stack, AI/ML, AWS. Founder of Klaro-tech.",
+  description: "Software Developer — Full-stack, AI/ML, AWS. Founder of Klaro-tech.",
 };
 
 export default function RootLayout({
