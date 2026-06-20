@@ -97,6 +97,7 @@ const articleContent: Record<string, {
 };
 
 const articles = [
+  { id: "no-right-way-to-use-ai", title: "There is no right way to use AI", date: "Jun 2026", category: "AI", route: "/articles/no-right-way-to-use-ai" },
   { id: "open-source-llms", title: "Do Open Source LLMs Make Us A Frontier Lab?", date: "Apr 2026", category: "ML", route: "/articles/open-source-llms" },
   { id: "fine-tuning", title: "Why Is Fine-Tuning Underrated?", date: "Mar 2026", category: "ML", route: "/articles/fine-tuning" },
   { id: "neural-nets", title: "Neural Networks From Scratch", date: "Nov 2024", category: "ML", external: false },
