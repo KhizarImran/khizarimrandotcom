@@ -6,6 +6,19 @@ const experience = [
   { company: "University of Dundee", role: "BSc Biomedical Science", period: "2020 – 2023", detail: "2:1 Honours" },
 ];
 
+const skills = [
+  { group: "Language", items: ["Python", "TypeScript", "SQL", "Rust"] },
+  { group: "Frontend", items: ["React", "Next.js", "Tailwind CSS"] },
+  { group: "Backend", items: ["Node.js", "FastAPI", "PostgreSQL", "Redis"] },
+  { group: "AI / ML", items: ["PyTorch", "Claude API", "RAG", "Fine-tuning"] },
+  { group: "Infrastructure", items: ["AWS", "Docker", "Proxmox", "Vercel", "Linux"] },
+  { group: "Workflow", items: ["Neovim", "Claude Code", "Git", "Arch Linux"] },
+];
+
+const projects = [
+  { name: "backtestingfx", lang: "Rust", detail: "Backtesting FX strategies on OHLCV data", url: "https://github.com/KhizarImran/backtestingfx" },
+];
+
 const links = [
   { name: "GitHub", handle: "@KhizarImran", url: "https://github.com/KhizarImran" },
   { name: "Twitter / X", handle: "@khzrimrn", url: "https://x.com/khzrimrn" },
@@ -13,7 +26,23 @@ const links = [
   { name: "Medium", handle: "@khizarimran", url: "https://medium.com/@khizarimran" },
 ];
 
-export default function Home() {
+// ponytail: public proxy for GitHub's contribution calendar (the official one needs a PAT).
+// If it ever dies, the graph just disappears. Swap for the GraphQL API + token if that matters.
+async function getContributions() {
+  try {
+    const r = await fetch("https://github-contributions-api.jogruber.de/v4/KhizarImran?y=last", {
+      next: { revalidate: 86400 },
+    });
+    if (!r.ok) return null;
+    return (await r.json()) as { total: { lastYear: number }; contributions: { date: string; level: number }[] };
+  } catch {
+    return null;
+  }
+}
+
+export default async function Home() {
+  const contrib = await getContributions();
+
   return (
     <div className="wrap">
       <Nav />
@@ -29,6 +58,22 @@ export default function Home() {
             a SaaS platform for algorithmic traders.
           </p>
         </section>
+
+        {contrib && (
+          <section className="section">
+            <div className="graph-head">
+              <p className="section-label" style={{ marginBottom: 0 }}>GitHub</p>
+              <span className="graph-total">{contrib.total.lastYear} contributions in the last year</span>
+            </div>
+            <div className="graph-scroll">
+              <div className="graph">
+                {contrib.contributions.map((d) => (
+                  <i key={d.date} data-level={d.level} title={`${d.date}`} />
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         <section className="section">
           <p className="section-label">Software</p>
@@ -65,6 +110,37 @@ export default function Home() {
                   <div className="row-sub">{e.detail}</div>
                 </div>
                 <span className="row-right">{e.period}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="section">
+          <p className="section-label">Skills</p>
+          <div className="skill-grid">
+            {skills.map((s) => (
+              <div key={s.group}>
+                <p className="skill-group">{s.group}</p>
+                <ul className="skill-list">
+                  {s.items.map((i) => <li key={i}>{i}</li>)}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="section">
+          <p className="section-label">Projects</p>
+          <ul className="row-list">
+            {projects.map((p) => (
+              <li key={p.name} className="row-item">
+                <div className="row-left">
+                  <div className="row-name">
+                    <a href={p.url} target="_blank" rel="noopener noreferrer">{p.name}</a>
+                  </div>
+                  <div className="row-sub">{p.detail}</div>
+                </div>
+                <span className="row-right">{p.lang}</span>
               </li>
             ))}
           </ul>
