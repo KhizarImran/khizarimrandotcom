@@ -10,6 +10,11 @@
   --text-3:       #888888;
   --link:         #0055cc;
   --link-hov:     #003ea3;
+  --lvl-0:        #ebedf0;
+  --lvl-1:        #9be9a8;
+  --lvl-2:        #40c463;
+  --lvl-3:        #30a14e;
+  --lvl-4:        #216e39;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,6 +27,11 @@
     --text-3:     #606060;
     --link:       #6badf5;
     --link-hov:   #93c5fd;
+    --lvl-0:      #2f2f2f;
+    --lvl-1:      #0e4429;
+    --lvl-2:      #006d32;
+    --lvl-3:      #26a641;
+    --lvl-4:      #39d353;
   }
 }
 
@@ -145,6 +155,59 @@ a:hover { color: var(--link-hov); text-decoration: underline; }
   color: var(--text-3);
   white-space: nowrap;
   flex-shrink: 0;
+}
+
+/* ─── Contribution graph ─────────────────────────────────── */
+.graph-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.graph-total { font-size: 12px; color: var(--text-3); }
+
+.graph-scroll { overflow-x: auto; }
+
+.graph {
+  display: grid;
+  grid-template-rows: repeat(7, 1fr);
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 2px;
+  min-width: 480px;
+}
+.graph i {
+  aspect-ratio: 1;
+  border-radius: 2px;
+  background: var(--lvl-0);
+}
+.graph i[data-level="1"] { background: var(--lvl-1); }
+.graph i[data-level="2"] { background: var(--lvl-2); }
+.graph i[data-level="3"] { background: var(--lvl-3); }
+.graph i[data-level="4"] { background: var(--lvl-4); }
+
+/* ─── Skills grid ────────────────────────────────────────── */
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 22px 16px;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+
+.skill-group {
+  font-size: 12.5px;
+  font-weight: 550;
+  color: var(--text);
+  margin-bottom: 5px;
+}
+
+.skill-list { list-style: none; }
+.skill-list li {
+  font-size: 13px;
+  color: var(--text-3);
+  line-height: 1.7;
 }
 
 /* ─── Article list ───────────────────────────────────────── */
