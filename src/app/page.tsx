@@ -2,7 +2,6 @@ import Nav from "./nav";
 
 const experience = [
   { company: "MGroup Energy", role: "Software Developer", period: "Jun 2024 – Present", detail: "Full-stack development, AI/ML integration, AWS infrastructure" },
-  { company: "Klaro-tech", role: "Founder", period: "2024 – Present", detail: "SaaS for algorithmic traders" },
   { company: "University of Dundee", role: "BSc Biomedical Science", period: "2020 – 2023", detail: "2:1 Honours" },
 ];
 
@@ -53,9 +52,9 @@ export default async function Home() {
             Software developer based in Newcastle, UK. I build full-stack products, integrate AI/ML systems,
             and design cloud infrastructure on AWS. Currently at{" "}
             <a href="https://mgroupltd.com" target="_blank" rel="noopener noreferrer">MGroup Energy</a>{" "}
-            and founder of{" "}
-            <a href="https://klaro-tech.com" target="_blank" rel="noopener noreferrer">Klaro-tech</a>,
-            a SaaS platform for algorithmic traders.
+            and maintainer of{" "}
+            <a href="https://github.com/KhizarImran/backtestingfx" target="_blank" rel="noopener noreferrer">backtestingfx</a>,
+            a Rust core library for algorithmic traders.
           </p>
         </section>
 
@@ -116,20 +115,6 @@ export default async function Home() {
         </section>
 
         <section className="section">
-          <p className="section-label">Skills</p>
-          <div className="skill-grid">
-            {skills.map((s) => (
-              <div key={s.group}>
-                <p className="skill-group">{s.group}</p>
-                <ul className="skill-list">
-                  {s.items.map((i) => <li key={i}>{i}</li>)}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="section">
           <p className="section-label">Projects</p>
           <ul className="row-list">
             {projects.map((p) => (
@@ -144,6 +129,20 @@ export default async function Home() {
               </li>
             ))}
           </ul>
+        </section>
+
+        <section className="section">
+          <p className="section-label">Skills</p>
+          <div className="skill-grid">
+            {skills.map((s) => (
+              <div key={s.group}>
+                <p className="skill-group">{s.group}</p>
+                <ul className="skill-list">
+                  {s.items.map((i) => <li key={i}>{i}</li>)}
+                </ul>
+              </div>
+            ))}
+          </div>
         </section>
 
         <section className="section">

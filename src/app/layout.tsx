@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://khizarimran.com"),
   title: "Khizar Imran",
-  description: "Software Developer — Full-stack, AI/ML, AWS. Founder of Klaro-tech.",
+  description: "Software Developer — Full-stack, AI/ML, AWS. Maintainer of backtestingfx.",
 };
 
 export default function RootLayout({
